@@ -1,5 +1,5 @@
 FROM nginx:1.15-alpine
 
-COPY ./sites/default.conf /etc/nginx/conf.d/default.conf
+COPY ./sites/* /etc/nginx/conf.d/
 
 WORKDIR /var/www

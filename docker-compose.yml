@@ -30,6 +30,23 @@ services:
         restart: always
         volumes:
             - ./:/var/www
+
+    rpc-fpm:
+        build:
+            context: ../rpc/docker/php-fpm
+            dockerfile: Dockerfile
+        expose:
+          - 9000
+        restart: always
+        volumes:
+            - ../rpc/:/var/www
+    rpc-cli:
+        build:
+            context: ../rpc/docker/php-cli
+            dockerfile: Dockerfile
+        volumes:
+            - ../rpc/:/var/www
+
     nginx:
         build:
             context: docker/nginx
@@ -39,5 +56,7 @@ services:
             - ./:/var/www
         depends_on:
             - php-fpm
+            - rpc-fpm
         ports:
             - 80:8080
+            - 8081:8081

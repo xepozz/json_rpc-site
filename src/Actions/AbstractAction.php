@@ -4,26 +4,34 @@ namespace App\Actions;
 
 use App\Exceptions\BadRequestException;
 use GuzzleHttp\Client;
+use Phalcon\Di\Injectable;
 use Psr\Http\Message\StreamInterface;
 use Throwable;
 
-abstract class AbstractAction
+abstract class AbstractAction extends Injectable
 {
     public function request(array $params)
     {
+        $config = $this->di->get('config');
+        $url = $config['application']['jsonRpcUrl'];
+
         try {
             $client = new Client(
                 [
-                    'base_uri' => 'http://nginx:8080',
+                    'base_uri' => 'http://' . $url,
                     'timeout' => 2,
                     'allow_redirects' => false,
                 ]
             );
 
-            $body = $client
-                ->request('GET', 'rpc', $params)
+            $response = $client
+                ->post('rpc', $params);
+
+            $body = $response
                 ->getBody();
 
+            var_dump($body->getContents());
+            exit();
             return $this->decode($body);
         } catch (Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
