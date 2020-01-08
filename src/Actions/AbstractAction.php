@@ -25,13 +25,22 @@ abstract class AbstractAction extends Injectable
             );
 
             $response = $client
-                ->post('rpc', $params);
+                ->post(
+                    'rpc',
+                    [
+                        'form_params' => [
+                            'params' => $params,
+                            'method' => $this->getActionName(),
+                        ],
+                    ]
+                );
 
             $body = $response
                 ->getBody();
 
-//            var_dump($body->getContents());
-//            exit();
+            print_r($body->getContents());
+            exit();
+
             return $this->decode($body);
         } catch (Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
@@ -44,6 +53,6 @@ abstract class AbstractAction extends Injectable
     {
         $options = JSON_UNESCAPED_UNICODE;
 
-        return json_decode($body, true, 512, $options);
+        return json_decode($body, true, 512, $options)['result'] ?? 'error';
     }
 }
