@@ -27,7 +27,7 @@ return [
         'baseUri'         => getenv('APP_BASE_URI'),
         'publicUrl'       => getenv('APP_PUBLIC_URL'),
         'cryptSalt'       => getenv('APP_CRYPT_SALT'),
-        'viewsDir'        => root_path('themes/App/'),
+        'viewsDir'        => root_path('themes/app/'),
         'cacheDir'        => root_path('var/cache/'),
         'sessionSavePath' => root_path('var/cache/session/'),
     ],
