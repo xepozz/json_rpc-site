@@ -31,17 +31,6 @@ return [
         'cacheDir'        => root_path('var/cache/'),
         'sessionSavePath' => root_path('var/cache/session/'),
     ],
-    'mail'        => [
-        'fromName'  => getenv('MAIL_FROM_NAME'),
-        'fromEmail' => getenv('MAIL_FROM_EMAIL'),
-        'smtp'      => [
-            'server'   => getenv('MAIL_SMTP_SERVER'),
-            'port'     => getenv('MAIL_SMTP_PORT'),
-            'security' => getenv('MAIL_SMTP_SECURITY'),
-            'username' => getenv('MAIL_SMTP_USERNAME'),
-            'password' => getenv('MAIL_SMTP_PASSWORD'),
-        ],
-    ],
     'logger'      => [
         'path'     => root_path('var/logs/'),
         'format'   => '%date% [%type%] %message%',
@@ -49,6 +38,4 @@ return [
         'logLevel' => Logger::DEBUG,
         'filename' => 'application.log',
     ],
-    // Set to false to disable sending emails (for use in test environment)
-    'useMail'     => true,
 ];
