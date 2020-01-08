@@ -1,14 +1,6 @@
 <?php
-declare(strict_types=1);
 
-/**
- * This file is part of the Vökuró.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view
- * the LICENSE file that was distributed with this source code.
- */
+declare(strict_types=1);
 
 namespace App\Providers;
 
@@ -26,22 +18,19 @@ class DbProvider implements ServiceProviderInterface
      * @var string
      */
     protected $providerName = 'db';
-
     /**
      * Class map of database adapters, indexed by PDO::ATTR_DRIVER_NAME.
      *
      * @var array
      */
     protected $adapters = [
-        'mysql'  => Pdo\Mysql::class,
-        'pgsql'  => Pdo\Postgresql::class,
+        'mysql' => Pdo\Mysql::class,
+        'pgsql' => Pdo\Postgresql::class,
         'sqlite' => Pdo\Sqlite::class,
     ];
 
-
     /**
      * @param DiInterface $di
-     *
      * @return void
      * @throws RuntimeException
      */
@@ -49,26 +38,26 @@ class DbProvider implements ServiceProviderInterface
     {
         /** @var Config $config */
         $config = $di->getShared('config')->get('database');
-        $class  = $this->getClass($config);
+        $class = $this->getClass($config);
         $config = $this->createConfig($config);
-
-        $di->set($this->providerName, function () use ($class, $config) {
-            return new $class($config);
-        });
+        $di->set(
+            $this->providerName,
+            function () use ($class, $config) {
+                return new $class($config);
+            }
+        );
     }
 
     /**
      * Get an adapter class by name.
      *
      * @param Config $config
-     *
      * @return string
      * @throws RuntimeException
      */
     private function getClass(Config $config): string
     {
         $name = $config->get('adapter', 'Unknown');
-
         if (empty($this->adapters[$name])) {
             throw new RuntimeException(
                 sprintf(
@@ -86,7 +75,6 @@ class DbProvider implements ServiceProviderInterface
         // To prevent error: SQLSTATE[08006] [7] invalid connection option "adapter"
         $dbConfig = $config->toArray();
         unset($dbConfig['adapter']);
-
         $name = $config->get('adapter');
         switch ($this->adapters[$name]) {
             case Pdo\Sqlite::class:

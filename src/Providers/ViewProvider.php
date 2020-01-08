@@ -1,14 +1,6 @@
 <?php
-declare(strict_types=1);
 
-/**
- * This file is part of the Vökuró.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view
- * the LICENSE file that was distributed with this source code.
- */
+declare(strict_types=1);
 
 namespace App\Providers;
 
@@ -36,23 +28,29 @@ class ViewProvider implements ServiceProviderInterface
         $viewsDir = $config->path('application.viewsDir');
         /** @var string $cacheDir */
         $cacheDir = $config->path('application.cacheDir');
+        $di->setShared(
+            $this->providerName,
+            function () use ($viewsDir, $cacheDir, $di) {
+                $view = new View();
+                $view->setViewsDir($viewsDir);
+                $view->registerEngines(
+                    [
+                        '.volt' => function (View $view) use ($cacheDir, $di) {
+                            $volt = new Volt($view, $di);
+                            $volt->setOptions(
+                                [
+                                    'path' => $cacheDir . 'volt/',
+                                    'separator' => '_',
+                                ]
+                            );
 
-        $di->setShared($this->providerName, function () use ($viewsDir, $cacheDir, $di) {
-            $view = new View();
-            $view->setViewsDir($viewsDir);
-            $view->registerEngines([
-                '.volt' => function (View $view) use ($cacheDir, $di) {
-                    $volt = new Volt($view, $di);
-                    $volt->setOptions([
-                        'path'      => $cacheDir . 'volt/',
-                        'separator' => '_',
-                    ]);
+                            return $volt;
+                        },
+                    ]
+                );
 
-                    return $volt;
-                },
-            ]);
-
-            return $view;
-        });
+                return $view;
+            }
+        );
     }
 }

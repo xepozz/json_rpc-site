@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -14,7 +15,7 @@ use Phalcon\Di\DiInterface;
 function container()
 {
     $default = Di::getDefault();
-    $args    = func_get_args();
+    $args = func_get_args();
     if (empty($args)) {
         return $default;
     }
@@ -26,7 +27,6 @@ function container()
  * Get projects relative root path
  *
  * @param string $prefix
- *
  * @return string
  */
 function root_path(string $prefix = ''): string
