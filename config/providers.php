@@ -7,7 +7,6 @@ use App\Providers\DispatcherProvider;
 use App\Providers\FlashProvider;
 use App\Providers\LoggerProvider;
 use App\Providers\RouterProvider;
-use App\Providers\UrlProvider;
 use App\Providers\ViewProvider;
 
 return [
@@ -16,6 +15,5 @@ return [
     FlashProvider::class,
     LoggerProvider::class,
     RouterProvider::class,
-    UrlProvider::class,
     ViewProvider::class,
 ];
