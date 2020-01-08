@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 use Phalcon\Logger;
 
-use function Vokuro\root_path;
+use function App\root_path;
 
 return [
     'database'    => [
@@ -27,7 +27,7 @@ return [
         'baseUri'         => getenv('APP_BASE_URI'),
         'publicUrl'       => getenv('APP_PUBLIC_URL'),
         'cryptSalt'       => getenv('APP_CRYPT_SALT'),
-        'viewsDir'        => root_path('themes/vokuro/'),
+        'viewsDir'        => root_path('themes/App/'),
         'cacheDir'        => root_path('var/cache/'),
         'sessionSavePath' => root_path('var/cache/session/'),
     ],

@@ -9,10 +9,10 @@ return
 [
     'paths' => [
         'migrations' => [
-            'Vokuro\\Migrations' => '%%PHINX_CONFIG_DIR%%/db/migrations'
+            'App\\Migrations' => '%%PHINX_CONFIG_DIR%%/db/migrations'
         ],
         'seeds' => [
-            'Vokuro\\Seeds' => '%%PHINX_CONFIG_DIR%%/db/seeds',
+            'App\\Seeds' => '%%PHINX_CONFIG_DIR%%/db/seeds',
         ],
     ],
     'environments' => [

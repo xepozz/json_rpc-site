@@ -10,13 +10,13 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Vokuro\Providers;
+namespace App\Providers;
 
+use App\Application;
 use Exception;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Mvc\Router;
-use Vokuro\Application;
 
 class RouterProvider implements ServiceProviderInterface
 {

@@ -1,7 +1,7 @@
 # Vökuró
 
 [![Discord](https://img.shields.io/discord/310910488152375297?label=Discord)](http://phalcon.link/discord)
-[![Build Status](https://travis-ci.org/phalcon/vokuro.svg?branch=master)](https://travis-ci.org/phalcon/vokuro)
+[![Build Status](https://travis-ci.org/phalcon/App.svg?branch=master)](https://travis-ci.org/phalcon/App)
 [![Phalcon Backers](https://img.shields.io/badge/phalcon-backers-99ddc0.svg)](https://github.com/phalcon/cphalcon/blob/master/BACKERS.md)
 [![OpenCollective](https://opencollective.com/phalcon/backers/badge.svg)](#backers)
 [![OpenCollective](https://opencollective.com/phalcon/sponsors/badge.svg)](#sponsors)
@@ -30,7 +30,7 @@ To run this application on your machine, you need at least:
 TODO: change version after next release is launched.
 
 ```bash
-composer create-project phalcon/vokuro /path/to/vokuro-folder "4.0.x-dev" --prefer-dist
+composer create-project phalcon/App /path/to/App-folder "4.0.x-dev" --prefer-dist
 ```
 
 ### Installing Dependencies via Composer
@@ -44,7 +44,7 @@ curl -s http://getcomposer.org/installer | php
 Run the composer installer:
 
 ```bash
-cd vokuro
+cd App
 composer install
 cp .env.example .env
 vendor/bin/phinx migrate

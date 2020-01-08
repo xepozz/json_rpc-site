@@ -10,12 +10,12 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Vokuro\Providers;
+namespace App\Providers;
 
+use App\Application;
 use Phalcon\Config;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
-use Vokuro\Application;
 
 /**
  * Register the global configuration as config

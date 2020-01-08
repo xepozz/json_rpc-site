@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-use Vokuro\Application as VokuroApplication;
+use App\Application as AppApplication;
 
 error_reporting(E_ALL);
 $rootPath = dirname(__DIR__);
@@ -25,7 +25,7 @@ try {
     /**
      * Run Vökuró!
      */
-    echo (new VokuroApplication($rootPath))->run();
+    echo (new AppApplication($rootPath))->run();
 } catch (Exception $e) {
     echo $e->getMessage(), '<br>';
     echo nl2br(htmlentities($e->getTraceAsString()));

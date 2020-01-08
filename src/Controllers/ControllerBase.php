@@ -10,12 +10,12 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Vokuro\Controllers;
+namespace App\Controllers;
 
+use App\Plugins\Acl\Acl;
+use App\Plugins\Auth\Auth;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Dispatcher;
-use Vokuro\Plugins\Acl\Acl;
-use Vokuro\Plugins\Auth\Auth;
 
 /**
  * ControllerBase

@@ -10,17 +10,17 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-use Vokuro\Providers\ConfigProvider;
-use Vokuro\Providers\DbProvider;
-use Vokuro\Providers\DispatcherProvider;
-use Vokuro\Providers\FlashProvider;
-use Vokuro\Providers\LoggerProvider;
-use Vokuro\Providers\ModelsMetadataProvider;
-use Vokuro\Providers\RouterProvider;
-use Vokuro\Providers\SessionBagProvider;
-use Vokuro\Providers\SessionProvider;
-use Vokuro\Providers\UrlProvider;
-use Vokuro\Providers\ViewProvider;
+use App\Providers\ConfigProvider;
+use App\Providers\DbProvider;
+use App\Providers\DispatcherProvider;
+use App\Providers\FlashProvider;
+use App\Providers\LoggerProvider;
+use App\Providers\ModelsMetadataProvider;
+use App\Providers\RouterProvider;
+use App\Providers\SessionBagProvider;
+use App\Providers\SessionProvider;
+use App\Providers\UrlProvider;
+use App\Providers\ViewProvider;
 
 return [
     ConfigProvider::class,

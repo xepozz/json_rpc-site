@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Vokuro\Seeds;
+namespace App\Seeds;
 
 use Phinx\Seed\AbstractSeed;
 

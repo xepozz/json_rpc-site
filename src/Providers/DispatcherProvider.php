@@ -10,7 +10,7 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Vokuro\Providers;
+namespace App\Providers;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
@@ -32,7 +32,7 @@ class DispatcherProvider implements ServiceProviderInterface
     {
         $di->set($this->providerName, function () {
             $dispatcher = new Dispatcher();
-            $dispatcher->setDefaultNamespace('Vokuro\Controllers');
+            $dispatcher->setDefaultNamespace('App\Controllers');
 
             return $dispatcher;
         });

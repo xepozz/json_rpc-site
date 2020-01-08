@@ -10,7 +10,7 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Vokuro\Forms;
+namespace App\Forms;
 
 use Phalcon\Forms\Element\Password;
 use Phalcon\Forms\Form;

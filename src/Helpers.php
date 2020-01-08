@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Vokuro;
+namespace App;
 
 use Phalcon\Di;
 use Phalcon\Di\DiInterface;

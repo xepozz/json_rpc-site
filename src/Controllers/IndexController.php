@@ -10,7 +10,7 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Vokuro\Controllers;
+namespace App\Controllers;
 
 /**
  * Display the default index page.

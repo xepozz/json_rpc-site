@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Vokuro\Migrations;
+namespace App\Migrations;
 
 use Phinx\Migration\AbstractMigration;
 

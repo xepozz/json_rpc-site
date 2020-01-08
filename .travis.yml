@@ -13,7 +13,7 @@ services:
 addons:
   postgresql: "11.2"
   hosts:
-    - dev.vokuro.phalcon.io
+    - dev.App.phalcon.io
 
 env:
   global:
