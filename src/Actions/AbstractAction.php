@@ -30,8 +30,8 @@ abstract class AbstractAction extends Injectable
             $body = $response
                 ->getBody();
 
-            var_dump($body->getContents());
-            exit();
+//            var_dump($body->getContents());
+//            exit();
             return $this->decode($body);
         } catch (Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
