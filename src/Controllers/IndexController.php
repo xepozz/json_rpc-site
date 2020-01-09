@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Actions\ShortLinkDoAction;
-use App\Component\ShortLinkAction;
+use App\Actions\ShortenLinkAction;
 use App\Forms\CreateLinkForm;
+use App\Http\Rpc\Response;
 use Phalcon\Http\RequestInterface;
 use Phalcon\Mvc\Controller;
 
@@ -28,8 +28,28 @@ class IndexController extends Controller
     {
         $code = $request->get('link');
         $this->flash->success('Your link: ' . $code);
-        $action = $this->getDI()->get(ShortLinkDoAction::class);
+
+        /* @var $action \App\Actions\ShortenLinkAction */
+        $action = $this->getDI()->get(ShortenLinkAction::class);
         $result = $action->shorten($code);
-        $this->flash->success('Action result: ' . $result);
+        if ($result->hasErrors()) {
+            $this->showErrors($result);
+        } else {
+            $this->flash->success('Action result: ' . reset($result->getResult()));
+        }
+    }
+
+    /**
+     * @param \App\Http\Rpc\Response $result
+     */
+    private function showErrors(Response $result): void
+    {
+        $error = $result->getError();
+        $this->flash->error($error['message']);
+
+        $errors = $error['data'] ?? [];
+        foreach ($errors as $error) {
+            $this->flash->error($error['message']);
+        }
     }
 }
