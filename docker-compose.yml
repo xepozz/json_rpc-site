@@ -33,7 +33,7 @@ services:
 
     rpc-fpm:
         build:
-            context: ../rpc/docker/php-fpm
+            context: docker/php-fpm
             dockerfile: Dockerfile
         expose:
           - 9000
@@ -42,7 +42,7 @@ services:
             - ../rpc/:/var/www
     rpc-cli:
         build:
-            context: ../rpc/docker/php-cli
+            context: docker/php-cli
             dockerfile: Dockerfile
         volumes:
             - ../rpc/:/var/www
