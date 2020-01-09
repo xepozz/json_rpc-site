@@ -17,7 +17,7 @@ class IndexController extends Controller
     {
         if ($this->request->isPost()) {
             $this->processRequest($this->request);
-            return $this->response->redirect();
+//            return $this->response->redirect();
         }
 
         $this->view->setLayout('create');
@@ -65,11 +65,11 @@ class IndexController extends Controller
     private function showErrors(Response $result): void
     {
         $error = $result->getError();
-        $this->flash->error($error['message']);
+        $this->flashSession->error($error['message']);
 
         $errors = $error['data'] ?? [];
         foreach ($errors as $error) {
-            $this->flash->error($error['message']);
+            $this->flashSession->error($error['message']);
         }
     }
 }
