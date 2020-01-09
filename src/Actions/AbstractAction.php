@@ -29,6 +29,7 @@ abstract class AbstractAction extends Injectable
                     'rpc',
                     [
                         'form_params' => [
+                            'id' => $this->generateId(),
                             'params' => $params,
                             'method' => $this->getActionName(),
                         ],
@@ -54,5 +55,10 @@ abstract class AbstractAction extends Injectable
         $options = JSON_UNESCAPED_UNICODE;
 
         return json_decode($body, true, 512, $options)['result'] ?? 'error';
+    }
+
+    private function generateId()
+    {
+        return random_int(100, 10000);
     }
 }
