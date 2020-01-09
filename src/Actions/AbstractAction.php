@@ -29,6 +29,7 @@ abstract class AbstractAction extends Injectable
                     'rpc',
                     [
                         'form_params' => [
+                            'jsonrpc' => '2.0',
                             'id' => $this->generateId(),
                             'params' => $params,
                             'method' => $this->getActionName(),
