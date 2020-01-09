@@ -1,6 +1,6 @@
 <h1 class="mt-3">Short a link</h1>
 
-{{ flash.output() }}
+{{ flashSession.output() }}
 
 <form method="post">
     <div class="form-group row">

@@ -7,14 +7,14 @@ namespace App\Providers;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Escaper;
-use Phalcon\Flash\Direct as Flash;
+use Phalcon\Flash\Session;
 
 class FlashProvider implements ServiceProviderInterface
 {
     /**
      * @var string
      */
-    protected $providerName = 'flash';
+    protected $providerName = 'flashSession';
 
     /**
      * @param DiInterface $di
@@ -26,8 +26,7 @@ class FlashProvider implements ServiceProviderInterface
             $this->providerName,
             function () {
                 $escaper = new Escaper();
-                $flash = new Flash($escaper);
-                $flash->setImplicitFlush(false);
+                $flash = new Session($escaper);
                 $flash->setCssClasses(
                     [
                         'error' => 'alert alert-danger',
