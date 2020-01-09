@@ -2,9 +2,11 @@
 
 namespace App\Actions;
 
-class ShortLinkDoAction extends AbstractAction
+use App\Http\Rpc\Response;
+
+class ShortenLinkAction extends AbstractAction
 {
-    public function shorten(string $link)
+    public function shorten(string $link): Response
     {
         return $this->request(['link' => $link]);
     }
