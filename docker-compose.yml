@@ -10,7 +10,7 @@ services:
             - /etc/timezone:/etc/timezone:ro
             - /etc/localtime:/etc/localtime:ro
             - ./var/pgdata:/var/lib/postgresql/data
-        restart: always
+        restart: on-failure
         environment:
             POSTGRES_USER: user
             POSTGRES_PASSWORD: user
@@ -27,7 +27,7 @@ services:
             dockerfile: Dockerfile
         expose:
           - 9000
-        restart: always
+        restart: on-failure
         volumes:
             - ./:/var/www
 
@@ -37,7 +37,7 @@ services:
             dockerfile: Dockerfile
         expose:
           - 9000
-        restart: always
+        restart: on-failure
         volumes:
             - ../rpc/:/var/www
     rpc-cli:
@@ -51,7 +51,7 @@ services:
         build:
             context: docker/nginx
             dockerfile: Dockerfile
-        restart: always
+        restart: on-failure
         volumes:
             - ./:/var/www
         depends_on:
