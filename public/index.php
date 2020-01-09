@@ -14,9 +14,6 @@ try {
      */
     Dotenv\Dotenv::create($rootPath)->load();
 
-    /**
-     * Run Vökuró!
-     */
     echo (new AppApplication($rootPath))->run();
 } catch (Exception $e) {
     echo $e->getMessage(), '<br>';

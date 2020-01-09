@@ -11,9 +11,6 @@ use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Http\ResponseInterface;
 use Phalcon\Mvc\Application as MvcApplication;
 
-/**
- * Vökuró Application
- */
 class Application
 {
     const APPLICATION_PROVIDER = 'bootstrap';
@@ -70,12 +67,6 @@ class Application
         }
     }
 
-    /**
-     * Run Vökuró Application
-     *
-     * @return string
-     * @throws Exception
-     */
     public function run(): string
     {
         /** @var ResponseInterface $response */

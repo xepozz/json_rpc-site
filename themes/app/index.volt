@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
-    <title>Welcome to Vökuró</title>
+    <title>Welcome to Link Shorter</title>
 
     <link rel="stylesheet"
           href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

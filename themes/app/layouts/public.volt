@@ -1,10 +1,9 @@
 {%- set menus = [
-    'Home': 'index',
-    'About': 'about'
+    'Home': 'index'
 ] -%}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    {{ link_to(null, 'class': 'navbar-brand', 'Vökuró') }}
+    {{ link_to(null, 'class': 'navbar-brand', 'Link Shorter') }}
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,15 +21,6 @@
                 {% endif %}
             {%- endfor -%}
         </ul>
-
-        <ul class="navbar-nav my-2 my-lg-0">
-        {%- if logged_in is defined and not(logged_in is empty) -%}
-            <li class="nav-item">{{ link_to('users', 'class': 'nav-link', 'Users Panel') }}</li>
-            <li class="nav-item">{{ link_to('session/logout', 'class': 'nav-link', 'Logout') }}</li>
-        {% else %}
-            <li class="nav-item">{{ link_to('session/login', 'class': 'nav-link', 'Login') }}</li>
-        {% endif %}
-        </ul>
     </div>
 </nav>
 
@@ -39,16 +29,3 @@
         {{ content() }}
     </div>
 </main>
-
-<footer class="footer mt-auto py-3">
-    <div class="container">
-        <span class="text-muted">
-            Made with love by the Phalcon Team
-
-            {{ link_to("privacy", "Privacy Policy") }}
-            {{ link_to("terms", "Terms") }}
-
-            © {{ date("Y") }} Phalcon Team.
-        </span>
-    </div>
-</footer>
