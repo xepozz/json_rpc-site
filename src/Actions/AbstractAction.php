@@ -19,7 +19,7 @@ abstract class AbstractAction extends Injectable
             $client = new Client(
                 [
                     'base_uri' => 'http://' . $url,
-                    'timeout' => 2,
+                    'timeout' => 3,
                     'allow_redirects' => false,
                 ]
             );
