@@ -15,13 +15,13 @@ services:
             POSTGRES_USER: user
             POSTGRES_PASSWORD: user
             POSTGRES_DB: db_name
-    php-cli:
+    app-cli:
         build:
             context: docker/php-cli
             dockerfile: Dockerfile
         volumes:
             - ./:/var/www
-    php-fpm:
+    app-fpm:
         build:
             context: docker/php-fpm
             dockerfile: Dockerfile
@@ -31,7 +31,7 @@ services:
         volumes:
             - ./:/var/www
 
-    rpc-fpm:
+    api-fpm:
         build:
             context: docker/php-fpm
             dockerfile: Dockerfile
@@ -40,7 +40,7 @@ services:
         restart: on-failure
         volumes:
             - ../rpc/:/var/www
-    rpc-cli:
+    api-cli:
         build:
             context: docker/php-cli
             dockerfile: Dockerfile
@@ -55,8 +55,8 @@ services:
         volumes:
             - ./:/var/www
         depends_on:
-            - php-fpm
-            - rpc-fpm
+            - app-fpm
+            - api-fpm
         ports:
             - 80:8080
             - 8081:8081
