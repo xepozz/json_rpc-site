@@ -17,7 +17,7 @@ class IndexController extends Controller
     {
         if ($this->request->isPost()) {
             $this->processRequest($this->request);
-//            return $this->response->redirect();
+            return $this->response->redirect();
         }
 
         $this->view->setLayout('create');
