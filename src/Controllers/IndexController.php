@@ -8,6 +8,7 @@ use App\Actions\ShortenLinkAction;
 use App\Exceptions\BadRequestException;
 use App\Forms\CreateLinkForm;
 use App\Http\Rpc\Response;
+use Phalcon\Escaper;
 use Phalcon\Http\RequestInterface;
 use Phalcon\Mvc\Controller;
 
@@ -15,13 +16,22 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        if ($this->request->isPost()) {
+        $form = new CreateLinkForm();
+
+        if ($this->request->isPost() && $form->isValid($this->request->getPost())) {
             $this->processRequest($this->request);
+
             return $this->response->redirect();
         }
 
+        if (count($messages = $form->getMessages()) > 0) {
+            $this->flashSession->error('Validation error');
+            foreach ($messages as $message) {
+                $this->flashSession->error($message->getMessage());
+            }
+        }
+
         $this->view->setLayout('create');
-        $form = new CreateLinkForm();
         $this->view->setVar('form', $form);
         $this->view->setTemplateBefore('public');
     }
@@ -43,20 +53,23 @@ class IndexController extends Controller
 
         if ($result->hasErrors()) {
             $this->showErrors($result);
-        } else {
-            $config = $this->di->get('config');
-            $url = $config['application']['publicUrl'];
 
-            $result = $result->getResult();
-            $code = reset($result);
-            $this->flashSession->success(
-                sprintf(
-                    'Your link: %s was successfully shortened to %s',
-                    $link,
-                    $url . '/' . $code
-                )
-            );
+            return;
         }
+
+        $config = $this->di->get('config');
+        $url = $config['application']['publicUrl'];
+
+        $escaper = new Escaper();
+        $result = $result->getResult();
+        $code = reset($result);
+        $this->flashSession->success(
+            sprintf(
+                'Your link: %s was successfully shortened to %s',
+                $link,
+                $escaper->escapeHtml($url . '/' . $code)
+            )
+        );
     }
 
     /**
