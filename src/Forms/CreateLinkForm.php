@@ -6,6 +6,7 @@ namespace App\Forms;
 
 use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Form;
+use Phalcon\Url;
 use Phalcon\Validation\Validator\Callback;
 use Phalcon\Validation\Validator\PresenceOf;
 
@@ -19,6 +20,11 @@ class CreateLinkForm extends Form
                 new PresenceOf(
                     [
                         'message' => 'The :field is required',
+                    ]
+                ),
+                new Url(
+                    [
+                        'message' => ':field contain invalid url',
                     ]
                 ),
                 new Callback(
