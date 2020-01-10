@@ -6,7 +6,7 @@ use Phalcon\Di\Injectable;
 
 class ResponseConverter extends Injectable
 {
-    public function toObject($result): Response
+    public function toObject(?array $result): Response
     {
         if ($result === null) {
             return new Response(
